@@ -2,23 +2,24 @@
 var1: .word 7, 2, -10, 44, 23, 75, 38, 88, 24, 25, 13
 
 .text
-lui x10,0x10000
-addi x11,x0,11
+lui x10,0x10000    #base address in x10
+addi x11,x0,11     #length in x11
 addi x7 x0 1
 
 jal x1,bubblesort
 beq x0,x0,finish
 
 bubblesort:
-beq x11,x7,exit
-   
+beq x11,x7,exit   #loop counter
+    
     addi x8,x0,1
     addi x2,x2,-4
     sw x11,0(x2)
     addi x2,x2,-4
     sw x1,0(x2)
-    #copy base address in x31
-    add x31,x0,x10
+    
+    add x31,x0,x10   #copy base address in x31
+
 loop:
 bge x8,x11,ff
     lw x30,0(x31)
